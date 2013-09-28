@@ -62,11 +62,16 @@ code .cont {
 	color: #5DBCD2;
 }
 
+.container {
+	margin-bottom: 20px;
+	padding-bottom: 60px;
+	border-bottom: 1px solid #ededed;
+}
+
 .container h3{
 	font-size: 18px;
 	padding: 3px;
 	border-bottom: 1px solid #ededed;
-
 }
 
 .github-ribbon {
