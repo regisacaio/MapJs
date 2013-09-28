@@ -6,5 +6,4 @@ In spirit of the open source project, the MapJs always encourages community code
 <li>Understand the project objective</li>
 <li>Always a search easy method to developer work with MapJs</li>
 </ul>
-<br/><br/>
 
