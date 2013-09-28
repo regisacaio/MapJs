@@ -1,18 +1,127 @@
 /*
+
 MapJs was developed by Raphael Amorim 
 
 GitHub Project -> http://github.com/raphamorim/mapjs
 
-Notes: MapJs with variously problems
-Be Cool and add "ROADMAP", "SATELLITE", "HYBRID", and "TERRAIN" options
 */
-  function include(file_path){
-      var head = document.getElementsByTagName('head')[0];
-      var j = document.createElement("script"); 
-      j.type = "text/javascript"; 
-      j.src = file_path; 
-      head.appendChild(j);
-  }
+
+
+function map(){ //MapClass
+
+      //GET MAP
+      this.getMap = function(item, mapWidth, mapHeight) {
+            if (navigator.geolocation) {
+                alert("Searching Location...");
+
+                sizeW = mapWidth;
+                sizeH = mapHeight;
+
+                if(mapWidth == null){
+                  sizeW = "500px";
+                }
+                if(mapHeight == null){
+                  sizeH = "200px";
+                }                
+
+                var element = document.querySelector(item);
+                element.innerHTML = "<h3 id='bar'>Loading...</h3><section><article><p><span id='status'>Please wait...</span></p></article></section></div>";
+              
+              navigator.geolocation.getCurrentPosition(success, error);
+
+            } else {
+                error('Your browser does not support <b style="color:#333;">Geolocation</b>!');
+            }
+      }
+
+      //GET LOCATION
+      this.getLocation = function(item){
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(setLL, error);
+            itemElement = item;
+          } else {
+            showError("Your browser does not support Geolocation!");
+          }
+      }
+
+      //SET MAP
+      this.createMap = function(item, latitude, longitude, mapWidth, mapHeight){
+          if (navigator.geolocation) {
+                alert("Creating Map...");
+
+                sizeW = mapWidth;
+                sizeH = mapHeight;
+
+                if(mapWidth == null){
+                  sizeW = "500px";
+                }
+                if(mapHeight == null){
+                  sizeH = "200px";
+                }                
+
+                var element = document.querySelector(item);
+                element.innerHTML = "<h3 id='bar'>Creating map...</h3><section><article><p><span id='status'></span></p></article></section></div>";                    
+
+                var s = document.querySelector('#status');
+
+                if (s.className == 'success') {
+                    return;
+                }
+
+                var bar = document.querySelector('#bar');
+                bar.innerHTML = "Location Found!";
+                
+                s.className = 'success';
+
+                var latlng = new google.maps.LatLng(latitude, longitude);
+
+                var mapcanvas = document.createElement('div');
+                mapcanvas.id = 'mapcanvas';
+                mapcanvas.style.height = sizeH;
+                mapcanvas.style.width = sizeW;
+                
+                document.querySelector('article').appendChild(mapcanvas);
+
+                var myOptions = {
+                    zoom: 15,
+                    center: latlng,
+                    mapTypeControl: false,
+                    navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+            
+                var map = new google.maps.Map(document.getElementById("mapcanvas"), myOptions);
+
+                var marker = new google.maps.Marker({
+                    position: latlng,
+                    map: map,
+                    title:"You are here!"
+                });
+
+          } else {
+                error('Your browser does not support <b style="color:#333;">Geolocation</b>!');
+          }
+      }
+
+      this.show = function(location, animation){
+
+          switch(animation){
+
+          case 'default':    
+              animaDefault(location);
+              break;
+
+          default:
+              animaDefault(location);
+              break;
+          }
+
+      }
+
+}
+
+
+//Call outMethods
 
   window.google = window.google || {};
   google.maps = google.maps || {};
@@ -127,130 +236,5 @@ Be Cool and add "ROADMAP", "SATELLITE", "HYBRID", and "TERRAIN" options
       document.querySelector('#maptheater').style.opacity = '1';
 
       mapcanvas.innerHTML = "<div style='position:relative; margin-top:40px;' align='center'><div id='mapblock'></div></div>";
-
-
-  }
-
-
-  function map(){ //MapClass
-
-      //GET MAP
-      this.getMap = function(item, mapWidth, mapHeight) {
-            if (navigator.geolocation) {
-                alert("Searching Location...");
-
-                sizeW = mapWidth;
-                sizeH = mapHeight;
-
-                if(mapWidth == null){
-                  sizeW = "500px";
-                }
-                if(mapHeight == null){
-                  sizeH = "200px";
-                }                
-
-                var element = document.querySelector(item);
-                element.innerHTML = "<h3 id='bar'>Loading...</h3><section><article><p><span id='status'>Por favor aguarde enquanto nós tentamos localizar você...</span></p></article></section></div>";
-              
-              navigator.geolocation.getCurrentPosition(success, error);
-
-            } else {
-                error('Your browser does not support <b style="color:#333;">Geolocation</b>!');
-            }
-      }
-
-      //GET LOCATION
-      this.getLocation = function(item){
-          if (navigator.geolocation) {
-            alert("Searching Location...");
-            navigator.geolocation.getCurrentPosition(setLL, error);
-            itemElement = item;
-          } else {
-            showError("Your browser does not support Geolocation!");
-          }
-      }
-
-      //SET MAP
-      this.createMap = function(item, latitude, longitude, mapWidth, mapHeight){
-          if (navigator.geolocation) {
-                alert("Creating Map...");
-
-                sizeW = mapWidth;
-                sizeH = mapHeight;
-
-                if(mapWidth == null){
-                  sizeW = "500px";
-                }
-                if(mapHeight == null){
-                  sizeH = "200px";
-                }                
-
-                var element = document.querySelector(item);
-                element.innerHTML = "<h3 id='bar'>Creating map...</h3><section><article><p><span id='status'></span></p></article></section></div>";                    
-
-                var s = document.querySelector('#status');
-
-                if (s.className == 'success') {
-                    return;
-                }
-
-                var bar = document.querySelector('#bar');
-                bar.innerHTML = "Location Found!";
-
-                s.innerHTML = "You was located!";
-                
-                s.className = 'success';
-
-                var latlng = new google.maps.LatLng(latitude, longitude);
-
-                var mapcanvas = document.createElement('div');
-                mapcanvas.id = 'mapcanvas';
-                mapcanvas.style.height = sizeH;
-                mapcanvas.style.width = sizeW;
-                
-                document.querySelector('article').appendChild(mapcanvas);
-
-                var myOptions = {
-                    zoom: 15,
-                    center: latlng,
-                    mapTypeControl: false,
-                    navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                };
-            
-                var map = new google.maps.Map(document.getElementById("mapcanvas"), myOptions);
-
-                var marker = new google.maps.Marker({
-                    position: latlng,
-                    map: map,
-                    title:"You are here!"
-                });
-
-          } else {
-                error('Your browser does not support <b style="color:#333;">Geolocation</b>!');
-          }
-      }
-
-      this.show = function(location, animation){
-
-          include("js/MapLibrary.js");
-
-          document.writeln(brasil);
-
-          switch(animation){
-
-          case 'default':    
-              animaDefault(location);
-              break;
-
-          default:
-              animaDefault(location);
-              break;
-          }
-
-      }
-
-
-
 
   }

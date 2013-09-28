@@ -18,18 +18,24 @@
  	  <div class='body' align="center"> 
 		<img src='images/logo.png' height="100" />
 		
-    <div id='Mapa'></div>
+    <div id='Map1'></div>
     <br/><br/>
-
-    <a href='#' onclick="Map.show('Brasil')">Brasil</a>
-    <a href='#' onclick="Map.show('Usa')">USA</a>
-    <a href='#' onclick="Map.show('England')">England</a>
+    
+    My Coordinates is <strong><span id='Location'></span></strong>
+    
 
   </body>
   <script type="text/javascript" src='js/MapJs.js'></script>
+  
   <script type="text/javascript">
 
-  	   Map.createMap('#Mapa','-22.954024454303298','-43.17502982584231','500px','200px');
+       Map.getMap('#Map1');
+
+       Map.getLocation('#Location');
+
+       //or Create Map with default Location
+  	   //Map.createMap('#Element','-22.954024454303298','-43.17502982584231','500px','200px');
 
   </script>
+
 </html>
