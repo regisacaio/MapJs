@@ -4,6 +4,6 @@ In spirit of the open source project, the MapJs always encourages community code
 <ul>
 <li>Getting Involved</li>
 <li>Understand the project objective</li>
-<li>Always a search easy method to developer work with MapJs</li>
+<li>Always search a easy method to developer work with MapJs</li>
 </ul>
 
