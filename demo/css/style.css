@@ -1,0 +1,77 @@
+body {
+	color: gray;
+	font-size: 87.5%; /* Base font size is 14px */
+	font-family: Helvetica, sans-serif;
+	line-height: 1.4;
+	text-align: left;
+	background: url('../images/bg.png');
+}
+
+.body {	
+	margin: 0 auto;
+	margin-top: 70px;
+	width: 840px;
+	clear: both;
+}
+
+a {
+	cursor: pointer;
+}
+
+hr {
+	background: #ededed;
+	border: 1px solid #ededed;
+	margin-top: 40px;
+	margin-bottom: 50px;
+}
+
+pre {
+	font-size: 14px;
+	background: black;
+	color: white;
+	border-radius: 10px;
+}
+
+code .script {
+	color: #FF0000;
+}
+
+code .att {
+	color: lightgreen;
+}
+
+code .cont {
+	color: yellow;
+}
+
+.title, .container {
+	width: 90%;
+	margin: 0px auto;
+}
+
+.title h2 {
+	text-align: center;
+}
+
+.title img {
+	position: relative;
+	left: 30%;
+}
+
+.title span {
+	color: #5DBCD2;
+}
+
+.container h3{
+	font-size: 18px;
+	padding: 3px;
+	border-bottom: 1px solid #ededed;
+
+}
+
+.github-ribbon {
+	position: absolute;
+	top: 0;
+	right: 0;
+	border: 0;
+}

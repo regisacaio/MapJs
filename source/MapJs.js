@@ -12,7 +12,6 @@ function map(){ //MapClass
       //GET MAP
       this.getMap = function(item, mapWidth, mapHeight) {
             if (navigator.geolocation) {
-                alert("Searching Location...");
 
                 sizeW = mapWidth;
                 sizeH = mapHeight;
@@ -25,7 +24,7 @@ function map(){ //MapClass
                 }                
 
                 var element = document.querySelector(item);
-                element.innerHTML = "<h3 id='bar'>Loading...</h3><section><article><p><span id='status'>Please wait...</span></p></article></section></div>";
+                element.innerHTML = "<section><article><p><span id='status'>Please wait...</span></p></article></section></div>";
               
               navigator.geolocation.getCurrentPosition(success, error);
 
@@ -154,9 +153,6 @@ function map(){ //MapClass
     if (s.className == 'success') {
         return;
     }
-
-    var bar = document.querySelector('#bar');
-    bar.innerHTML = "Location Found!";
 
     s.innerHTML = "You was located!";
     
