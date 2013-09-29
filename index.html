@@ -37,7 +37,7 @@
       <code></code>
       <code>&lt;<span class='script'>script</span> <span class='att'>type</span>=<span class='cont'>"text/javascript"</span> <span class='att'>src</span>=<span class='cont'>"MapJs.js"</span>>&lt;/<span class='script'>script</span>></code>
       <code>&lt;<span class='script'>script</span> <span class='att'>type</span>=<span class='cont'>"text/javascript"</span>></code>
-      <code> Map.getMap(#element");</code>
+      <code> <span class='class'>Map</span>.<span class='method'>getMap</span>("<span class='par'>element</span>");</code>
       <code>&lt;/<span class='script'>script</span>></code>    
     </pre>
 
@@ -50,7 +50,7 @@
 
     <pre>
       <code></code>
-      <code> Map.getMap("#element");</code>
+      <code> <span class='class'>Map</span>.<span class='method'>getMap</span>("<span class='par'>element</span>");</code>
     </pre>
     PS: You can change width and height map, adding the parameters.
 
@@ -60,8 +60,23 @@
 
     <pre>
       <code></code>
-      <code> Map.getLocation("#element");</code>
+      <code> <span class='class'>Map</span>.<span class='method'>getLocation</span>("<span class='par'>element</span>");</code>
     </pre>
+    PS: The return gonna be "latitude.value | longitude.value", you can chage this in the source.
+
+    <br/><br/><br/><br/>
+
+    <strong>Create a Map with Lagitude and Longitude</strong>
+
+    <pre>
+      <code></code>
+      <code> <span class='class'>Map</span>.<span class='method'>createMap</span>("<span class='par'>element</span>", "<span class='par'>-22.901883168677948</span>", "<span class='par'>-43.18019274291985</span>", </code>
+      <code>"<span class='par'>500px</span>", "<span class='par'>250px</span>");</code>
+    </pre>
+    PS: The parameters (element, latitude, longitude, width, height).
+
+
+    </div>
 
     </div>
 
